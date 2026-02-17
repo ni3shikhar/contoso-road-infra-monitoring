@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Road Infrastructure Monitoring - Professional Dark Blue Theme */
+@layer base {
+  :root {
+    /* Background: #F8FAFC */
+    --background: 210 40% 98%;
+    /* Dark text on light background */
+    --foreground: 240 10% 10%;
+    
+    /* Cards: White with subtle shadow */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+    
+    /* Primary: #1B4F72 - Deep professional blue */
+    --primary: 207 61% 28%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary: #2E86C1 - Lighter accent blue */
+    --secondary: 204 62% 47%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Muted backgrounds */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    /* Accent for hover states */
+    --accent: 210 40% 96%;
+    --accent-foreground: 207 61% 28%;
+    
+    /* Destructive: #E74C3C */
+    --destructive: 6 78% 57%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 207 61% 28%;
+    --radius: 0.5rem;
+    
+    /* Custom colors for the design system */
+    --success: 145 63% 42%;
+    --warning: 36 100% 50%;
+    --info: 204 62% 47%;
+  }
+
+  .dark {
+    /* Dark theme: #1A1A2E */
+    --background: 240 24% 14%;
+    --foreground: 210 40% 98%;
+    
+    --card: 240 21% 18%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 240 21% 18%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 207 61% 45%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 204 62% 55%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 240 18% 22%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 240 18% 22%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 6 78% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 18% 25%;
+    --input: 240 18% 25%;
+    --ring: 207 61% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+/* Map container styles */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+/* Smooth transitions */
+.transition-sidebar {
+  transition: width 0.3s ease-in-out;
+}
+
+/* Alert animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* KPI ticker animation */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-ticker {
+  animation: ticker 30s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}

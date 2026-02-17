@@ -1,0 +1,46 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: simulator
+
+# API endpoints configuration
+api:
+  gateway:
+    url: ${API_GATEWAY_URL:http://localhost:8080}
+  auth:
+    username: ${API_USERNAME:admin}
+    password: ${API_PASSWORD:Admin@123}
+
+# Simulation settings
+simulation:
+  # Reading generation interval in seconds
+  reading-interval-seconds: ${READING_INTERVAL:10}
+  # Sensor failure simulation interval in minutes
+  failure-interval-minutes: ${FAILURE_INTERVAL:60}
+  # Failure recovery time in minutes
+  failure-recovery-minutes: ${FAILURE_RECOVERY:30}
+  # Anomaly injection interval in minutes
+  anomaly-interval-minutes: ${ANOMALY_INTERVAL:120}
+  # Battery drain percentage per reading cycle
+  battery-drain-per-cycle: ${BATTERY_DRAIN:0.01}
+  # Enable/disable simulation
+  enabled: ${SIMULATION_ENABLED:true}
+
+# Actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.contoso.roadinfra.simulator: DEBUG
+    org.springframework.web.reactive: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
